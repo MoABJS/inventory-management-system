@@ -6,6 +6,7 @@ import productRoutes from "./Routes/routes.js";
 export const app = express();
 dotenv.config();
 app.use(express.json());
+app.use(express.urlencoded());
 
 const PORT = process.env.PORT;
 

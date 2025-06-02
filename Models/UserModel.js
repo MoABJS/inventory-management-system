@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const customerSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -18,18 +18,15 @@ const customerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    membership: {
+    role: {
       type: String,
-      enum: ["gold", "silver", "bronze"],
-      default: "bronze",
-    },
-    purchases: {
-      type: [String],
+      enum: ["admin", "staff", "viewer"],
+      default: "viewer",
     },
   },
   { versionKey: false, timestamps: true }
 );
 
-const customerModel = mongoose.model("customers", customerSchema);
+const userModel = mongoose.model("users", userSchema);
 
-export default customerModel;
+export default userModel;

@@ -1,6 +1,6 @@
 import { body } from "express-validator";
 
-const customerValidation = [
+const userValidation = [
   body("firstName")
     .trim()
     .notEmpty()
@@ -25,6 +25,12 @@ const customerValidation = [
     .withMessage("Password field is required")
     .isString()
     .withMessage("Password should be a string"),
+  body("role")
+    .trim()
+    .notEmpty()
+    .withMessage("Role field is required")
+    .isIn(["admin", "staff", "viewer"])
+    .withMessage("Role should be admin, staff or veiwer"),
 ];
 
-export default customerValidation;
+export default userValidation;
