@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
+import userModel from "../Models/UserModel.js";
 
-const authorization = (req, res, next) => {
+const authorization = async (req, res, next) => {
   try {
     const cookieName = "jwtToken";
 
@@ -21,9 +22,16 @@ const authorization = (req, res, next) => {
 
     const jwtUserToken = jwt.verify(accessToken, process.env.JWT_SECRET_KEY);
 
+    // console.log("jwtUserToken", jwtUserToken);
+
     if (!jwtUserToken || !jwtUserToken.id) {
       return res.json(401).json({ success: false, message: "Invalid token" });
     }
+
+    const user = await userModel.findById(jwtUserToken.id).select("-password");
+    req.user = user;
+
+    // console.log(user);
 
     console.log("Authorized, positive");
     next();
