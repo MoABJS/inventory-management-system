@@ -33,7 +33,7 @@ const authorization = async (req, res, next) => {
 
     // console.log(user);
 
-    console.log("Authorized, positive");
+    // console.log("Authorized, positive");
     next();
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });

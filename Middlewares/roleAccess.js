@@ -2,8 +2,8 @@ const roleAccess = (...allowedRoles) => {
   return (req, res, next) => {
     try {
       const role = req.user.role;
-      console.log("role", role);
-      console.log("allowedRoles", allowedRoles);
+      // console.log("role", role);
+      // console.log("allowedRoles", allowedRoles);
       if (!allowedRoles.includes(role)) {
         return res.status(401).json({
           success: false,
