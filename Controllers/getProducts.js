@@ -4,12 +4,7 @@ const getProducts = async (req, res) => {
   try {
     const filter = {};
     const category = req.query.category;
-    const allowedCategories = ["electronics", "clothing", "groceries", "books"];
-    if (!allowedCategories.includes(category)) {
-      return res
-        .status(401)
-        .json({ success: false, message: "There is no such category" });
-    }
+
     if (category) filter.category = category;
     const productsData = await productModel.find(filter);
 
