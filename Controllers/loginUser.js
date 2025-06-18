@@ -28,7 +28,7 @@ const loginUser = async (req, res) => {
 
     res.cookie("jwtToken", token, {
       httpOnly: true,
-      secure: false, //I have to change it to true upon completion of project
+      secure: true, //I have to change it to true upon completion of project
       sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000,
     });
