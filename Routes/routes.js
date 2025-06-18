@@ -15,7 +15,7 @@ import logoutUser from "../Controllers/logoutUser.js";
 const router = express.Router();
 
 router.get(
-  "/",
+  "/products",
   // authorization,
   // roleAccess("admin", "staff", "viewer"),
   getProducts

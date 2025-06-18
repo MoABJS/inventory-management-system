@@ -14,6 +14,9 @@ const PORT = process.env.PORT || 5000;
 
 connectToDB();
 app.use("/api", productRoutes);
+app.get("/", (req, res) => {
+  res.redirect("/api/products");
+});
 
 app.listen(PORT, () => {
   console.log("Server started with express");
